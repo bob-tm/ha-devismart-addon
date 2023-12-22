@@ -15,13 +15,13 @@ ENV \
     LC_ALL="en_US.UTF-8" \
     LANG="en_US.UTF-8" \
     LANGUAGE="en_US.UTF-8" \
-    OPENHAB_BACKUPS="/openhab/userdata/backup" \
-    OPENHAB_CONF="/openhab/conf" \
-    OPENHAB_HOME="/openhab" \
+    OPENHAB_BACKUPS="/config/userdata/backup" \
+    OPENHAB_CONF="/config/conf" \
+    OPENHAB_HOME="/config" \
     OPENHAB_HTTP_PORT="8080" \
     OPENHAB_HTTPS_PORT="8443" \
-    OPENHAB_LOGDIR="/openhab/userdata/logs" \
-    OPENHAB_USERDATA="/openhab/userdata" \
+    OPENHAB_LOGDIR="/config/userdata/logs" \
+    OPENHAB_USERDATA="/config/userdata" \
     USER_ID="9001"
 
 # Basic build-time metadata as defined at https://github.com/opencontainers/image-spec/blob/main/annotations.md#pre-defined-annotation-keys
