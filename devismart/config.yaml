@@ -3,7 +3,7 @@ name: Devismart Add-on
 version: "0.0.1"
 slug: devismart
 description: Devismart add-on
-url: "https://github.com/bob-tm/ha-devismart-addon/devismart"
+url: "https://github.com/bob-tm/ha-devismart-addon/tree/main/devismart"
 arch:
   - armhf
   - armv7
