@@ -15,13 +15,13 @@ ENV \
     LC_ALL="en_US.UTF-8" \
     LANG="en_US.UTF-8" \
     LANGUAGE="en_US.UTF-8" \
-    OPENHAB_BACKUPS="/config/userdata/backup" \
-    OPENHAB_CONF="/config/conf" \
+    OPENHAB_BACKUPS="/openhab/userdata/backup" \
+    OPENHAB_CONF="/openhab/conf" \
     OPENHAB_HOME="/openhab" \
     OPENHAB_HTTP_PORT="8080" \
     OPENHAB_HTTPS_PORT="8443" \
-    OPENHAB_LOGDIR="/config/userdata/logs" \
-    OPENHAB_USERDATA="/config/userdata" \
+    OPENHAB_LOGDIR="/openhab/userdata/logs" \
+    OPENHAB_USERDATA="/openhab/userdata" \
     USER_ID="9001"
 
 # Basic build-time metadata as defined at https://github.com/opencontainers/image-spec/blob/main/annotations.md#pre-defined-annotation-keys
@@ -92,8 +92,8 @@ RUN version="$(echo $OPENHAB_VERSION | sed 's/snapshot/SNAPSHOT/g')" && \
     mkdir -p "${OPENHAB_HOME}/dist" && \
     cp -a "${OPENHAB_CONF}" "${OPENHAB_USERDATA}" "${OPENHAB_HOME}/dist" && \
     echo 'export TERM=${TERM:=dumb}' | tee -a ~/.bashrc
-COPY update ${OPENHAB_HOME}/runtime/bin/update
-RUN chmod +x ${OPENHAB_HOME}/runtime/bin/update
+#COPY update ${OPENHAB_HOME}/runtime/bin/update
+#RUN chmod +x ${OPENHAB_HOME}/runtime/bin/update
 
 # Expose volume with configuration and userdata dir
 VOLUME ${OPENHAB_CONF} ${OPENHAB_USERDATA} ${OPENHAB_HOME}/addons
