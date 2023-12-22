@@ -1,7 +1,7 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-ARG BUILD_DATE="2023-08-28T09:24:41Z"
+ARG BUILD_DATE="2023-08-28T09:26:41Z"
 ARG VCS_REF="dkfnef2342sdf"
 ARG JAVA_VERSION=17
 ARG OPENHAB_VERSION="4.0.4"
@@ -17,7 +17,7 @@ ENV \
     LANGUAGE="en_US.UTF-8" \
     OPENHAB_BACKUPS="/config/userdata/backup" \
     OPENHAB_CONF="/config/conf" \
-    OPENHAB_HOME="/config" \
+    OPENHAB_HOME="/openhab" \
     OPENHAB_HTTP_PORT="8080" \
     OPENHAB_HTTPS_PORT="8443" \
     OPENHAB_LOGDIR="/config/userdata/logs" \
