@@ -1,6 +1,6 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: Devismart Add-on
-version: "0.0.21"
+version: "0.0.3"
 slug: devismart
 description: Devismart add-on
 url: "https://github.com/bob-tm/ha-devismart-addon/"
