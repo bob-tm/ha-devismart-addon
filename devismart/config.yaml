@@ -3,13 +3,12 @@ name: Devismart Add-on
 version: "0.0.2"
 slug: devismart
 description: Devismart add-on
-url: "https://github.com/bob-tm/ha-devismart-addon/tree/main/devismart"
+url: "https://github.com/bob-tm/ha-devismart-addon/"
 arch:
   - armhf
   - armv7
   - aarch64
   - amd64
-  - i386
 init: false
 map:
   - share:rw
@@ -17,4 +16,3 @@ options:
   message: "Hello world..."
 schema:
   message: "str?"
-image: "ghcr.io/home-assistant/{arch}-addon-devismart"
