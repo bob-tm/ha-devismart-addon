@@ -1,6 +1,5 @@
-#ARG BUILD_FROM
-#FROM $BUILD_FROM
-FROM debian:11.8-slim
+ARG BUILD_FROM
+FROM $BUILD_FROM
 
 ARG BUILD_DATE="2023-08-28T09:26:41Z"
 ARG VCS_REF="dkfnef2342sdf"
@@ -95,6 +94,9 @@ RUN version="$(echo $OPENHAB_VERSION | sed 's/snapshot/SNAPSHOT/g')" && \
     echo 'export TERM=${TERM:=dumb}' | tee -a ~/.bashrc
 COPY update ${OPENHAB_HOME}/runtime/bin/update
 RUN chmod +x ${OPENHAB_HOME}/runtime/bin/update
+
+RUN groupadd -g $NEW_GROUP_ID openhab && \
+    adduser -u $NEW_USER_ID --disabled-password --gecos '' --home "${OPENHAB_HOME}" --gid $NEW_GROUP_ID openhab
 
 # Expose volume with configuration and userdata dir
 VOLUME ${OPENHAB_CONF} ${OPENHAB_USERDATA} ${OPENHAB_HOME}/addons
