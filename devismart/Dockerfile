@@ -20,8 +20,8 @@ ENV \
     OPENHAB_HOME="/openhab" \
     OPENHAB_HTTP_PORT="8080" \
     OPENHAB_HTTPS_PORT="8443" \
-    OPENHAB_LOGDIR="/openhab/userdata/logs" \
-    OPENHAB_USERDATA="/openhab/userdata" \
+    OPENHAB_LOGDIR="/config/logs" \
+    OPENHAB_USERDATA="/config/userdata" \
     USER_ID="9001" \
     NEW_USER_ID="9001" \
     NEW_GROUP_ID="9001"
@@ -98,7 +98,8 @@ COPY update ${OPENHAB_HOME}/runtime/bin/update
 RUN chmod +x ${OPENHAB_HOME}/runtime/bin/update
 
 RUN groupadd -g $NEW_GROUP_ID openhab && \
-    adduser -u $NEW_USER_ID --disabled-password --gecos '' --home "${OPENHAB_HOME}" --gid $NEW_GROUP_ID openhab
+    adduser -u $NEW_USER_ID --disabled-password --gecos '' --home "${OPENHAB_HOME}" --gid $NEW_GROUP_ID openhab && \
+    chown -R openhab:openhab "${OPENHAB_HOME}"
 
 # Expose volume with configuration and userdata dir
 VOLUME ${OPENHAB_CONF} ${OPENHAB_USERDATA} ${OPENHAB_HOME}/addons
