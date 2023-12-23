@@ -95,7 +95,9 @@ RUN version="$(echo $OPENHAB_VERSION | sed 's/snapshot/SNAPSHOT/g')" && \
 COPY update ${OPENHAB_HOME}/runtime/bin/update
 RUN chmod +x ${OPENHAB_HOME}/runtime/bin/update
 
-RUN groupadd -g $NEW_GROUP_ID openhab && \
+RUN NEW_USER_ID=${USER_ID:-9001}
+    NEW_GROUP_ID=${GROUP_ID:-$NEW_USER_ID}
+    groupadd -g $NEW_GROUP_ID openhab && \
     adduser -u $NEW_USER_ID --disabled-password --gecos '' --home "${OPENHAB_HOME}" --gid $NEW_GROUP_ID openhab
 
 # Expose volume with configuration and userdata dir
