@@ -117,15 +117,15 @@ HEALTHCHECK --interval=5m --timeout=5s --retries=3 CMD curl -f http://localhost:
 WORKDIR ${OPENHAB_HOME}
 COPY entrypoint /entrypoint
 RUN chmod +x /entrypoint
-ENTRYPOINT ["/entrypoint"]
+# ENTRYPOINT ["/entrypoint"]
 
 #test ssh server
-#RUN apt update && apt install  openssh-server sudo -y
-#RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test 
-#RUN  echo 'test:test' | chpasswd
-#RUN service ssh start
-#EXPOSE 22
-#CMD ["/usr/sbin/sshd","-D"]
+RUN apt update && apt install  openssh-server sudo -y
+RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test 
+RUN  echo 'test:test' | chpasswd
+RUN service ssh start
+EXPOSE 22
+CMD ["/usr/sbin/sshd","-D"]
 
 # Execute command
-CMD ["gosu", "openhab", "tini", "-s", "./start.sh"]
+# CMD ["gosu", "openhab", "tini", "-s", "./start.sh"]
