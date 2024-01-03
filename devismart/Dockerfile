@@ -117,7 +117,7 @@ HEALTHCHECK --interval=5m --timeout=5s --retries=3 CMD curl -f http://localhost:
 WORKDIR ${OPENHAB_HOME}
 COPY entrypoint /entrypoint
 RUN chmod +x /entrypoint
-# ENTRYPOINT ["/entrypoint"]
+ENTRYPOINT ["/entrypoint"]
 
 #test ssh server
 RUN apt update && apt install  openssh-server sudo -y
