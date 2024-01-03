@@ -61,9 +61,9 @@ RUN apt-get update && \
         tini \
         unzip \
         wget \
-	libprotobuf-c1 \
-	libsodium23 \
-	mc \
+    libprotobuf-c1 \
+    libsodium23 \
+    mc \
         zip && \
     c_rehash && \
     chmod u+s /usr/sbin/arping && \
@@ -102,10 +102,12 @@ RUN groupadd -g $NEW_GROUP_ID openhab && \
     chown -R openhab:openhab "${OPENHAB_HOME}"
 
 # Expose volume with configuration and userdata dir
-VOLUME ${OPENHAB_CONF} ${OPENHAB_USERDATA} ${OPENHAB_HOME}/addons
+#VOLUME ${OPENHAB_HOME}
+VOLUME /config
 
 # Expose HTTP, HTTPS, Console and LSP ports
-EXPOSE 8080 8443 8101 5007
+# EXPOSE 8080 8443 8101 5007
+EXPOSE 8080
 
 # Set healthcheck
 HEALTHCHECK --interval=5m --timeout=5s --retries=3 CMD curl -f http://localhost:${OPENHAB_HTTP_PORT}/ || exit 1
@@ -114,7 +116,7 @@ HEALTHCHECK --interval=5m --timeout=5s --retries=3 CMD curl -f http://localhost:
 WORKDIR ${OPENHAB_HOME}
 COPY entrypoint /entrypoint
 RUN chmod +x /entrypoint
-#ENTRYPOINT ["/entrypoint"]
+ENTRYPOINT ["/entrypoint"]
 
 #test ssh server
 RUN apt update && apt install  openssh-server sudo -y
@@ -122,7 +124,7 @@ RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test
 RUN  echo 'test:test' | chpasswd
 RUN service ssh start
 EXPOSE 22
-CMD ["/usr/sbin/sshd","-D"]
+#CMD ["/usr/sbin/sshd","-D"]
 
 # Execute command
-#CMD ["gosu", "openhab", "tini", "-s", "./start.sh"]
+CMD ["gosu", "openhab", "tini", "-s", "./start.sh"]
