@@ -99,7 +99,7 @@ RUN chmod +x ${OPENHAB_HOME}/runtime/bin/update
 
 RUN groupadd -g $NEW_GROUP_ID openhab && \
     adduser -u $NEW_USER_ID --disabled-password --gecos '' --home "${OPENHAB_HOME}" --gid $NEW_GROUP_ID openhab && \
-    chown -R openhab:openhab "${OPENHAB_HOME}" \
+    chown -R openhab:openhab "${OPENHAB_HOME}" && \
     chown -R openhab:openhab "/config"
 
 # Expose volume with configuration and userdata dir
