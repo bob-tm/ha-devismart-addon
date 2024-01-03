@@ -20,8 +20,8 @@ ENV \
     OPENHAB_HOME="/openhab" \
     OPENHAB_HTTP_PORT="8080" \
     OPENHAB_HTTPS_PORT="8443" \
-    OPENHAB_LOGDIR="/config/logs" \
-    OPENHAB_USERDATA="/config/userdata" \
+    OPENHAB_LOGDIR="/openhab/logs" \
+    OPENHAB_USERDATA="/openhab/userdata" \
     USER_ID="9001" \
     NEW_USER_ID="9001" \
     NEW_GROUP_ID="9001"
